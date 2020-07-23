@@ -66,14 +66,10 @@ svg {
   position: absolute;
   bottom: 0%;
   background: grey;
-  opacity: 0.1;
   padding: 1rem;
   width: 85%;
   border-top-right-radius: 1rem;
-  pointer-events: none;
   border-top-left-radius: 1rem;
-  -webkit-transform: translateY(100px);
-          transform: translateY(100px);
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
@@ -157,5 +153,14 @@ svg {
   background: none;
   cursor: pointer;
   margin: 1rem 0rem;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  margin: 1rem 0rem;
+  width: 100%;
+  position: relative;
+  border-radius: 1rem;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
