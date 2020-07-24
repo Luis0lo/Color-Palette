@@ -11,14 +11,19 @@ sliders.forEach((slider) => {
   slider.addEventListener("input", hslControls);
 });
 
+colorDivs.forEach((div, index) => {
+  div.addEventListener("change", () => {
+    updateTextUI(index);
+  });
+});
+
 //functions
-
 //Color Generator
-
 function generateHex() {
   const hexColor = chroma.random();
   return hexColor;
 }
+
 // without API Chroma
 // function generateHex() {
 //   const letters = "0123456789ABCDF";
@@ -107,6 +112,19 @@ function hslControls(e) {
     .set("hsl.h", hue.value);
 
   colorDivs[index].style.backgroundColor = color;
+}
+
+function updateTextUI(index) {
+  const activeDiv = colorDivs[index];
+  const color = chroma(activeDiv.style.backgroundColor);
+  const textHex = activeDiv.querySelector("h2");
+  const icons = activeDiv.querySelectorAll(".controls button");
+  textHex.innerText = color.hex();
+  //Check Contrast
+  checkTextContrast(color, textHex);
+  for (icon of icons) {
+    checkTextContrast(color, icon);
+  }
 }
 
 randomColors();
