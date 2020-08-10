@@ -13,6 +13,9 @@ const closeAdjustments = document.querySelectorAll(".close-adjustment");
 const sliderContainers = document.querySelectorAll(".sliders");
 let initialColors;
 
+//This is for local storage
+let savedPalettes = [];
+
 //Add Event Listeners
 
 generateBtn.addEventListener("click", randomColors);
@@ -46,13 +49,20 @@ closeAdjustments.forEach((button, index) => {
     closeAdjustmentPanel(index);
   });
 });
-// lockButton.forEach((button, index) => {
-//   button.addEventListener("click", (e) => {
-//     lockLayer(e, index);
-//   });
-// });
+lockButton.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    lockColor(index);
+  });
+});
 
 //functions
+
+function lockColor(index) {
+  colorDivs[index].classList.toggle("locked");
+  lockButton[index].children[0].classList.toggle("fa-lock-open");
+  lockButton[index].children[0].classList.toggle("fa-lock");
+}
+
 //Color Generator
 function generateHex() {
   const hexColor = chroma.random();
@@ -75,12 +85,17 @@ function generateHex() {
 function randomColors() {
   //
   initialColors = [];
+
   colorDivs.forEach((div, index) => {
     const hexText = div.children[0];
     const randomColor = generateHex();
-    // add it to the Array
-    // console.log(chroma(randomColor).hex());
-    initialColors.push(chroma(randomColor).hex());
+    //Add it to the array
+    if (div.classList.contains("locked")) {
+      initialColors.push(hexText.innerText);
+      return;
+    } else {
+      initialColors.push(chroma(randomColor).hex());
+    }
 
     //adding the color to the background
     div.style.backgroundColor = randomColor;
