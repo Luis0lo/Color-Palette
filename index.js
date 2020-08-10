@@ -116,6 +116,7 @@ function randomColors() {
   });
   //Reset Inputs
   resetInputs();
+
   //check for button contrast
   adjustButton.forEach((button, index) => {
     checkTextContrast(initialColors[index], button);

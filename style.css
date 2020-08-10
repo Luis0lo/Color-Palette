@@ -227,7 +227,7 @@ input[type="range"] {
 .copy-popup h4,
 .save-popup h4,
 .library-popup h4 {
-  font-size: 4rem;
+  font-size: 2rem;
   padding: 2rem;
 }
 
@@ -258,6 +258,7 @@ input[type="range"] {
 }
 
 .submit-save {
+  font-size: 1.5rem;
   margin: 2rem;
   padding: 1rem 3rem;
   background: #3c3c5c;
@@ -268,7 +269,7 @@ input[type="range"] {
 }
 
 .library-popup {
-  min-width: 40%;
+  min-width: 50%;
   padding: 1rem;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -316,7 +317,6 @@ input[type="range"] {
 .pick-palette-btn {
   height: 5rem;
   border: none;
-  padding: 1rem;
   cursor: pointer;
   font-size: 1.2rem;
   background: #292929;
